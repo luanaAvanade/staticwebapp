@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="Moq" Version="4.11.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.15" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gicaf.Domain\Gicaf.Domain.csproj" />
+    <ProjectReference Include="..\Gicaf.Infra.Data\Gicaf.Infra.Data.csproj" />
+    <ProjectReference Include="..\Infra.CrossCutting.IoC\Infra.CrossCutting.IoC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Attributes\JsonFileDataAttribute.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="JsonFiles\Coordenadas.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="graphql.aspnetcore" Version="1.1.4" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gicaf.Application.Interface\Gicaf.Application.Interface.csproj" />
+    <ProjectReference Include="..\Gicaf.Domain\Gicaf.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

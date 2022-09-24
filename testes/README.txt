@@ -1,0 +1,1 @@
+Armazenar nesta pasta o código-fonte para os testes automatizados.

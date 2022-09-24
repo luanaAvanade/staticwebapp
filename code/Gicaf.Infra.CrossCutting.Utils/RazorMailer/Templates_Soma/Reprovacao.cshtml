@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: Arial, Helvetica Neue, Helvetica, sans-serif;font-size: small;padding: 0px;    margin: 0 !important; padding: 0 !important;">
+    <div style=" text-align: center;vertical-align: middle;color:#607a7b">
+        <tr style="height: 50px;width: 100%;">
+            <td style="height: 50px; width:100%;">
+                <h1>SOMA Fornecedores</h1>
+            </td>
+        </tr>
+    </div>
+    <div style="padding-left: 10%; padding-right: 10%; background-color: #eff3f8; padding-bottom: 5%;">
+        <table style=" width: 100%;">
+            <tbody>
+                <tr>
+                  <td style="width: 60%;text-align: justify;vertical-align: middle;touch-action: manipulation;padding: 12px 12px;font-size: 14px;line-height: 1.42857;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;text-decoration: none;">
+                      <p> Prezado(a) Fornecedor @Model.NomeEmpresa, seu cadastro foi <span style="color:red;">reprovado</span> nos itens mencionados abaixo, regularize conforme parecer e reencaminhe para análise novamente.</p>                        
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+          @foreach(var i in @Model.ItensAnalise.Keys){
+              <h2> @i </h2>
+              <table style="width: 100%;">
+                <tbody>
+                  @foreach(var j in @Model.ItensAnalise.GetValueOrDefault(i)){
+                    <tr style="width: 90%; border-color:  #81848678; text-align: center;margin: auto;min-height: 35px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);transition: 0.3s;margin-bottom: 20px;">            
+                      <td class="divItem" style="background-color: #81848678; border-color:  #81848678;  display: box;justify-content: space-between;border-top-left-radius: 5px;width: 75%;text-align: left;padding: 4px;padding-left: 20px;">          
+                          <h3> @j.DisplayItem </h3>
+                      </td>
+                      <td class="divStatus" style="background-color: #81848678; border-color:  #81848678; display: box;border-top-right-radius: 5px;width: 25%;text-align: center;height: 20px;margin: auto;">
+                          <div class="statusTag" style="padding: 3px;background-color: #f8f8f885;border-radius: 2px;color: #f90101;font-weight: 600;width: 60%;margin:auto;font-size: 10px;">
+                              @j.DisplayStatus
+                          </div>
+                      </td>
+                    </tr>
+                    <tr style="width: 90%;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px; min-height: 90px;background-color:white;">
+                      <td colspan="2" class="divContent" style="height: 45px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+                        <p>
+                          @j.Justificativa
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" style="height: 10px;"></td>
+                    </tr>
+                  } 
+                  
+                </tbody>
+              </table>
+          }  
+        <table style=" width: 100%;">
+            <tbody>
+                <tr>
+
+                    <td style="width: 60%;text-align: justify;vertical-align: middle;touch-action: manipulation;padding: 12px 12px;font-size: 14px;line-height: 1.42857;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;text-decoration: none;">
+                        <p> Para realizar os ajustes e reenviar o cadastro clique no botão abaixo.</p>                     
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
+        <table style="width: 100%;">
+          <tbody>
+              <tr>
+                  <td></td>
+                  <td style="color: #FFF;background-color: #336667;border-color: #336667;width: 60%;text-align: center;vertical-align: middle;touch-action: manipulation;padding: 12px 12px;font-size: 14px;line-height: 1.42857;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;text-decoration: none;">
+                      <span>
+                          <a href="@(Model.LinkReajuste)" style="color:#fff; text-decoration: none;">Ajustar cadastro</a>
+                      </span>
+                  </td>
+                  <td>
+                  </td>
+              </tr>
+          </tbody>
+        </table>
+        <table style="width: 100%;">
+            <tbody>
+                <tr>
+                  <td colspan="2" style="height: 10px;"></td>
+                </tr>
+                <tr style="color: #bab9c1;">
+                    <td><span> Se tiver problemas, copie e cole o link abaixo no navegador: </span></td>
+                </tr>
+                <tr style="color: #336667;">
+                    <td><span>@Model.LinkReajuste </span></td>
+
+                </tr>
+            </tbody>
+
+        </table>       
+    </div>
+</body>
+</html>

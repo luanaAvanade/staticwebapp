@@ -1,0 +1,11 @@
+{
+  "Nome": "Teste",
+  "Coordenadas": [
+    //[50,150]
+    {
+      "Latitude": 90,
+      "Longitude": 180
+    }
+  ]
+}
+

@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="16.0">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GraphQl.AspNetCore" Version="1.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gicaf.Application.Interface\Gicaf.Application.Interface.csproj" />
+    <ProjectReference Include="..\Infra.CrossCutting.IoC\Infra.CrossCutting.IoC.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="pkgfiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="pkgfiles\README.MD">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

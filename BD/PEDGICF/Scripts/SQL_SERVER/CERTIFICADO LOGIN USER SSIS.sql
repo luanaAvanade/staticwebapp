@@ -1,0 +1,110 @@
+--CRIAR CERTIFICADO
+ /*
+ USE PED653
+ DROP SIGNATURE FROM OBJECT::[dbo].[CALL_SSIS_PACKAGE]
+ BY CERTIFICATE SSIS_CERT
+ DROP USER SSIS_USER
+ DROP CERTIFICATE SSIS_CERT
+
+ USE SSISDB
+  DROP USER SSIS_USER
+  --DROP CERTIFICATE SSIS_CERT
+ 
+ 
+ USE MASTER
+ DROP LOGIN SSIS_LOGIN
+ DROP CERTIFICATE SSIS_CERT
+ 
+ USE MSDB
+ --DROP USER SSIS_USER
+ DROP SIGNATURE FROM OBJECT::[dbo].[CALL_SSIS_PACKAGE]
+ BY CERTIFICATE SSIS_CERT
+ DROP CERTIFICATE SSIS_CERT
+*/
+USE MASTER
+
+CREATE CERTIFICATE SSIS_CERT
+ENCRYPTION BY PASSWORD = 'Str0ngPWD!'
+WITH SUBJECT = 'Certificate for SSIS stored procedures'
+GO
+ 
+CREATE LOGIN SSIS_LOGIN FROM CERTIFICATE SSIS_CERT 
+GO
+-- in order to grant db user rights, we must transfer to that db the same certificate
+BACKUP CERTIFICATE SSIS_CERT TO FILE='C:\temp\SSIS_CERT.CER'
+WITH PRIVATE KEY
+(   
+	FILE = 'C:\temp\SSIS_CERT.PVK',
+    DECRYPTION BY PASSWORD = 'Str0ngPWD!', -- pwd to open the key
+    ENCRYPTION BY PASSWORD = 'FilePWD!1' -- must protect the file
+)
+GO
+
+--USE [MSDB]
+--CREATE USER SSIS_USER  FROM LOGIN SSIS_LOGIN
+
+--USE [SSISDB]
+USE [MSDB]
+
+CREATE CERTIFICATE SSIS_CERT from file='C:\temp\SSIS_CERT.CER'
+WITH PRIVATE KEY
+(   
+	FILE = 'C:\temp\SSIS_CERT.PVK',
+    DECRYPTION BY PASSWORD = 'FilePWD!1', -- to read the file
+    ENCRYPTION BY PASSWORD = 'Str0ngPWD!' -- pwd to protect the key
+)
+
+-- by signing procedure, it will run under login associated with that certificate
+ADD SIGNATURE TO OBJECT::[dbo].[CALL_SSIS_PACKAGE]
+BY CERTIFICATE SSIS_CERT
+WITH PASSWORD='Str0ngPWD!'
+GO
+
+CREATE USER SSIS_USER  FROM LOGIN SSIS_LOGIN
+GO
+GRANT EXECUTE ON [dbo].[CALL_SSIS_PACKAGE] TO SSIS_USER
+
+/*
+ADD SIGNATURE TO OBJECT::[SSISDB].[catalog].[Create_Execution]
+BY CERTIFICATE SSIS_CERT
+WITH PASSWORD='Str0ngPWD!'
+GO
+
+ADD SIGNATURE TO OBJECT::[SSISDB].[catalog].[Set_Execution_Parameter_Value]
+BY CERTIFICATE SSIS_CERT
+WITH PASSWORD='Str0ngPWD!'
+GO
+
+
+ADD SIGNATURE TO OBJECT::[SSISDB].[catalog].[Start_Execution]
+BY CERTIFICATE SSIS_CERT
+WITH PASSWORD='Str0ngPWD!'
+GO
+*/
+USE [SSISDB]
+
+CREATE USER SSIS_USER  FROM LOGIN SSIS_LOGIN
+GO
+GRANT EXECUTE ON [SSISDB].[catalog].[Create_Execution] TO SSIS_USER
+GRANT EXECUTE ON [SSISDB].[catalog].[Set_Execution_Parameter_Value] TO SSIS_USER
+GRANT EXECUTE ON [SSISDB].[catalog].[Start_Execution] TO SSIS_USER
+GO
+--EXEC [dbo].[CALL_SSIS_PACKAGE] @p_codigo_pergunta = 1
+/*
+GRANT EXECUTE   
+   ON [CALL_SSIS_PACKAGE]   
+   TO SSIS_USER;  
+GO  */
+
+/*
+SELECT OBJECT_NAME(cp.major_id)
+    FROM sys.crypt_properties AS cp  
+    JOIN sys.certificates AS cer  
+        ON cp.thumbprint = cer.thumbprint  
+    WHERE cer.name = 'SSIS_CERT' ;  
+*/
+/*
+
+use msdb
+EXEC [dbo].[CALL_SSIS_PACKAGE] @p_codigo_pergunta = 1
+*/

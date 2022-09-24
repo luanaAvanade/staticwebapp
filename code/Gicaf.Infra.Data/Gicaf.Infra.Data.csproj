@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <SSDTUnitTestPath Condition="'../../(SSDTUnitTestPath)' == ''">../../(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB</SSDTUnitTestPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SSDTPath Condition="'../../(SSDTPath)' == ''">../../(VsInstallRoot)\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\130</SSDTPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="GraphQL\**" />
+    <EmbeddedResource Remove="GraphQL\**" />
+    <None Remove="GraphQL\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Migrations\20191029191204_dadoscomplementares.cs" />
+    <Compile Remove="Migrations\20191025214457_Pessoa4.cs" />
+    <Compile Remove="Migrations\20191028155932_testedaniel.cs" />
+    <Compile Remove="Migrations\20191217232750_teste.cs" />
+    <Compile Remove="Migrations\20191217232750_teste.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="PdfParser\SinonimosBalanco.csv" />
+    <None Remove="PdfParser\SinonimosDemonstracao.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PdfParser\SinonimosBalanco.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PdfParser\SinonimosDemonstracao.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="28.4.1" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.1" />
+    <PackageReference Include="LINQKit.Core" Version="1.1.16" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="SimpleInjector.Integration.ServiceCollection" Version="4.8.1" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.*" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.4.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Axxiom.EFCore.BulkExtensions\EFCore.BulkExtensions.csproj" />
+    <ProjectReference Include="..\Axxiom.Linq.Dynamic.Core\Axxiom.Linq.Dynamic.Core.csproj" />
+    <ProjectReference Include="..\Gicaf.Domain\Gicaf.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Console">
+      <HintPath>..\..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.logging.console\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Console.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
+  </PropertyGroup>
+</Project>

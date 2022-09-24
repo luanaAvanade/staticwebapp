@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="150.18208.0" />
+    <PackageReference Include="simpleinjector" Version="4.8.1" />
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore" Version="4.8.1" />
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc.Core" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gicaf.Application.Interface\Gicaf.Application.Interface.csproj" />
+    <ProjectReference Include="..\Gicaf.Application\Gicaf.Application.csproj" />
+    <ProjectReference Include="..\Gicaf.Domain\Gicaf.Domain.csproj" />
+    <ProjectReference Include="..\Gicaf.Infra.CrossCutting.Utils\Gicaf.Infra.CrossCutting.Utils.csproj" />
+    <ProjectReference Include="..\Gicaf.Infra.Data\Gicaf.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>

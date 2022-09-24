@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body style="font-family: Arial, Helvetica Neue, Helvetica, sans-serif;font-size: small;padding: 0px;    margin: 0 !important; padding: 0 !important;">
+    <div style=" text-align: center;vertical-align: middle;color:#607a7b">
+        <tr style="height: 50px;width: 100%;">
+            <td style="height: 50px; width:100%;">
+                <h1>SOMA Fornecedores</h1>
+            </td>
+        </tr>
+    </div>
+    <div style="padding-left: 10%; padding-right: 10%; background-color: #eff3f8; padding-bottom: 5%;">
+        <table style=" width: 100%;">
+            <tbody>
+                <tr>
+
+                    <td style="color: #FFF;background-color: #1cc989;border-color: #1cc989;width: 60%;text-align: center;vertical-align: middle;touch-action: manipulation;padding: 12px 12px;font-size: 14px;line-height: 1.42857;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;text-decoration: none;">
+                        <h3 style="margin: 0;">O pré-cadastro foi realizado com sucesso.</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div style="padding-top: 25px;    color: #717277;>
+                                            <div style="font-size: 25px>
+                                                <p style=";text-color: #717277" ">
+                                                    <h3 class="profile-desc-text-title">Olá @Model.Nome .</span>
+                                                </p>
+                                                <p>
+                                                    <span> Para sua segurança, é preciso que você confirme se este é seu endereço de e-mail cadastrado através do botão abaixo.</span>
+                                                </p>
+                                                <p>
+                                                    <span> O seu usuario de acesso ao sistema é @Model.Email </span>
+                                                </p>
+                                            </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="width: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td style="color: #FFF;background-color: #336667;border-color: #336667;width: 60%;text-align: center;vertical-align: middle;touch-action: manipulation;padding: 12px 12px;font-size: 14px;line-height: 1.42857;border-radius: 4px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;text-decoration: none;">
+                                        <span>
+                                            <a href="@(Model.LinkConfirmacao)" style="color:#fff; text-decoration: none;">Confirmar cadastro</a>
+                                        </span>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                        <table style="width: 100%;">
+                            <tbody>
+                                <tr style="color: #bab9c1;">
+                                    <td><span> Se tiver problemas, copie e cole o link abaixo no navegador: </span></td>
+
+                                </tr>
+                                <tr style="color: #336667;">
+                                    <td><span>@Model.LinkConfirmacao </span></td>
+
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+
